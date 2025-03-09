@@ -1,0 +1,2324 @@
+[
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "name": "getWeather",
+                "args": "",
+                "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                  "type": "function",
+                  "function": {
+                    "name": "getWeather",
+                    "arguments": ""
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [
+              {
+                "name": "getWeather",
+                "args": {},
+                "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                "type": "tool_call"
+              }
+            ],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "name": "getWeather",
+            "args": "",
+            "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+              "type": "function",
+              "function": {
+                "name": "getWeather",
+                "arguments": ""
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [
+          {
+            "name": "getWeather",
+            "args": {},
+            "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+            "type": "tool_call"
+          }
+        ],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "{\"",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "{\""
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "{\"",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "{\"",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "{\""
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "{\"",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "location",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "location"
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "location",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "location",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "location"
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "location",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "\":\"",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "\":\""
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "\":\"",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "\":\"",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "\":\""
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "\":\"",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "Sur",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "Sur"
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "Sur",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "Sur",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "Sur"
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "Sur",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "ab",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "ab"
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "ab",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "ab",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "ab"
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "ab",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "aya",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "aya"
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "aya",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "aya",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "aya"
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "aya",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [
+              {
+                "args": "\"}",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "function": {
+                    "arguments": "\"}"
+                  }
+                }
+              ]
+            },
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": [
+              {
+                "args": "\"}",
+                "error": "Malformed args.",
+                "type": "invalid_tool_call"
+              }
+            ]
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [
+          {
+            "args": "\"}",
+            "index": 0,
+            "type": "tool_call_chunk"
+          }
+        ],
+        "additional_kwargs": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "arguments": "\"}"
+              }
+            }
+          ]
+        },
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": [
+          {
+            "args": "\"}",
+            "error": "Malformed args.",
+            "type": "invalid_tool_call"
+          }
+        ]
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "finish_reason": "tool_calls",
+              "system_fingerprint": null,
+              "model_name": "gpt-3.5-turbo-0125",
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "finish_reason": "tool_calls",
+          "system_fingerprint": null,
+          "model_name": "gpt-3.5-turbo-0125",
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_end",
+      "data": {
+        "output": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                  "type": "function",
+                  "function": {
+                    "name": "getWeather",
+                    "arguments": "{\"location\":\"Surabaya\"}"
+                  }
+                }
+              ]
+            },
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {
+                "prompt_tokens": 52,
+                "completion_tokens": 17,
+                "total_tokens": 69,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "finish_reason": "tool_calls",
+              "system_fingerprint": null,
+              "model_name": "gpt-3.5-turbo-0125"
+            },
+            "tool_call_chunks": [
+              {
+                "name": "getWeather",
+                "args": "{\"location\":\"Surabaya\"}",
+                "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                "index": 0,
+                "type": "tool_call_chunk"
+              }
+            ],
+            "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+            "usage_metadata": {
+              "input_tokens": 52,
+              "output_tokens": 17,
+              "total_tokens": 69,
+              "input_token_details": {
+                "audio": 0,
+                "cache_read": 0
+              },
+              "output_token_details": {
+                "audio": 0,
+                "reasoning": 0
+              }
+            },
+            "tool_calls": [
+              {
+                "name": "getWeather",
+                "args": {
+                  "location": "Surabaya"
+                },
+                "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                "type": "tool_call"
+              }
+            ],
+            "invalid_tool_calls": []
+          }
+        },
+        "input": {
+          "messages": [
+            [
+              {
+                "lc": 1,
+                "type": "constructor",
+                "id": [
+                  "langchain_core",
+                  "messages",
+                  "HumanMessage"
+                ],
+                "kwargs": {
+                  "content": "apa cuaca di surabaya saiki?",
+                  "additional_kwargs": {},
+                  "response_metadata": {}
+                }
+              }
+            ]
+          ]
+        }
+      },
+      "run_id": "4185e55d-55c5-410d-a25e-90dfdd7d4209",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_end",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "usage_metadata",
+    "inputTokens": 52,
+    "outputTokens": 17
+  },
+  {
+    "lcEvent": {
+      "event": "on_tool_start",
+      "data": {
+        "input": {
+          "input": "{\"location\":\"Surabaya\"}"
+        }
+      },
+      "name": "getWeather",
+      "run_id": "55e0ee6e-671e-46f9-93b0-c15e4d734524",
+      "tags": [],
+      "metadata": {}
+    },
+    "lcEventName": "on_tool_start",
+    "lcEventFrom": "getWeather",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "tool_start",
+    "name": "getWeather",
+    "data": {
+      "input": {
+        "input": "{\"location\":\"Surabaya\"}"
+      }
+    }
+  },
+  {
+    "lcEvent": {
+      "event": "on_tool_end",
+      "data": {
+        "output": "The weather in Surabaya is sunny",
+        "input": {
+          "input": "{\"location\":\"Surabaya\"}"
+        }
+      },
+      "run_id": "55e0ee6e-671e-46f9-93b0-c15e4d734524",
+      "name": "getWeather",
+      "tags": [],
+      "metadata": {}
+    },
+    "lcEventName": "on_tool_end",
+    "lcEventFrom": "getWeather",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "tool_end",
+    "name": "getWeather",
+    "data": {
+      "output": "The weather in Surabaya is sunny",
+      "input": {
+        "input": "{\"location\":\"Surabaya\"}"
+      }
+    }
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "Cu",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "Cu",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": "Cu"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "aca",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "aca",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": "aca"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": " di",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": " di",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": " di"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": " Sur",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": " Sur",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": " Sur"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "ab",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "ab",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": "ab"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "aya",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "aya",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": "aya"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": " saat",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": " saat",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": " saat"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": " ini",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": " ini",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": " ini"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": " adalah",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": " adalah",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": " adalah"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": " cer",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": " cer",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": " cer"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "ah",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "ah",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": "ah"
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": ".",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": ".",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": "."
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_stream",
+      "data": {
+        "chunk": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "",
+            "tool_call_chunks": [],
+            "additional_kwargs": {},
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "finish_reason": "stop",
+              "system_fingerprint": null,
+              "model_name": "gpt-3.5-turbo-0125",
+              "usage": {}
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_stream",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "content",
+    "chunk": {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain_core",
+        "messages",
+        "AIMessageChunk"
+      ],
+      "kwargs": {
+        "content": "",
+        "tool_call_chunks": [],
+        "additional_kwargs": {},
+        "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+        "response_metadata": {
+          "prompt": 0,
+          "completion": 0,
+          "finish_reason": "stop",
+          "system_fingerprint": null,
+          "model_name": "gpt-3.5-turbo-0125",
+          "usage": {}
+        },
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    },
+    "content": ""
+  },
+  {
+    "lcEvent": {
+      "event": "on_chat_model_end",
+      "data": {
+        "output": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain_core",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "Cuaca di Surabaya saat ini adalah cerah.",
+            "additional_kwargs": {},
+            "response_metadata": {
+              "prompt": 0,
+              "completion": 0,
+              "usage": {
+                "prompt_tokens": 84,
+                "completion_tokens": 14,
+                "total_tokens": 98,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "finish_reason": "stop",
+              "system_fingerprint": null,
+              "model_name": "gpt-3.5-turbo-0125"
+            },
+            "tool_call_chunks": [],
+            "id": "chatcmpl-B9Fvia1B88ysB3j41FLzkL1nmH6JQ",
+            "usage_metadata": {
+              "input_tokens": 84,
+              "output_tokens": 14,
+              "total_tokens": 98,
+              "input_token_details": {
+                "audio": 0,
+                "cache_read": 0
+              },
+              "output_token_details": {
+                "audio": 0,
+                "reasoning": 0
+              }
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        },
+        "input": {
+          "messages": [
+            [
+              {
+                "lc": 1,
+                "type": "constructor",
+                "id": [
+                  "langchain_core",
+                  "messages",
+                  "HumanMessage"
+                ],
+                "kwargs": {
+                  "content": "apa cuaca di surabaya saiki?",
+                  "additional_kwargs": {},
+                  "response_metadata": {}
+                }
+              },
+              {
+                "lc": 1,
+                "type": "constructor",
+                "id": [
+                  "langchain_core",
+                  "messages",
+                  "AIMessageChunk"
+                ],
+                "kwargs": {
+                  "content": "",
+                  "additional_kwargs": {
+                    "tool_calls": [
+                      {
+                        "index": 0,
+                        "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                        "type": "function",
+                        "function": {
+                          "name": "getWeather",
+                          "arguments": "{\"location\":\"Surabaya\"}"
+                        }
+                      }
+                    ]
+                  },
+                  "response_metadata": {
+                    "prompt": 0,
+                    "completion": 0,
+                    "usage": {
+                      "prompt_tokens": 52,
+                      "completion_tokens": 17,
+                      "total_tokens": 69,
+                      "prompt_tokens_details": {
+                        "cached_tokens": 0,
+                        "audio_tokens": 0
+                      },
+                      "completion_tokens_details": {
+                        "reasoning_tokens": 0,
+                        "audio_tokens": 0,
+                        "accepted_prediction_tokens": 0,
+                        "rejected_prediction_tokens": 0
+                      }
+                    },
+                    "finish_reason": "tool_calls",
+                    "system_fingerprint": null,
+                    "model_name": "gpt-3.5-turbo-0125"
+                  },
+                  "tool_call_chunks": [
+                    {
+                      "name": "getWeather",
+                      "args": "{\"location\":\"Surabaya\"}",
+                      "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                      "index": 0,
+                      "type": "tool_call_chunk"
+                    }
+                  ],
+                  "id": "chatcmpl-B9FvhSvuBVZHhzEuRO3YigBruvM5R",
+                  "usage_metadata": {
+                    "input_tokens": 52,
+                    "output_tokens": 17,
+                    "total_tokens": 69,
+                    "input_token_details": {
+                      "audio": 0,
+                      "cache_read": 0
+                    },
+                    "output_token_details": {
+                      "audio": 0,
+                      "reasoning": 0
+                    }
+                  },
+                  "tool_calls": [
+                    {
+                      "name": "getWeather",
+                      "args": {
+                        "location": "Surabaya"
+                      },
+                      "id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                      "type": "tool_call"
+                    }
+                  ],
+                  "invalid_tool_calls": []
+                }
+              },
+              {
+                "lc": 1,
+                "type": "constructor",
+                "id": [
+                  "langchain_core",
+                  "messages",
+                  "ToolMessage"
+                ],
+                "kwargs": {
+                  "tool_call_id": "call_1QrNnwzaEWoEmA5n9IkJbPxq",
+                  "content": "The weather in Surabaya is sunny",
+                  "additional_kwargs": {
+                    "name": "getWeather"
+                  },
+                  "response_metadata": {}
+                }
+              }
+            ]
+          ]
+        }
+      },
+      "run_id": "36ab821e-bd76-4a97-b5c8-a3601e98ec78",
+      "name": "ChatOpenAI",
+      "tags": [
+        "seq:step:3"
+      ],
+      "metadata": {
+        "ls_provider": "openai",
+        "ls_model_name": "gpt-3.5-turbo",
+        "ls_model_type": "chat",
+        "ls_temperature": 0,
+        "ls_max_tokens": 40
+      }
+    },
+    "lcEventName": "on_chat_model_end",
+    "lcEventFrom": "ChatOpenAI",
+    "modelIndex": 0,
+    "modelId": "@openai/gpt3.5-turbo",
+    "type": "usage_metadata",
+    "inputTokens": 84,
+    "outputTokens": 14
+  }
+]
