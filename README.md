@@ -2,11 +2,11 @@
 Multi AI SDK built on top of Langchain, designed for seamless integration into projects with modular workflows and extensions.
 
 ## Main Features
-- 📚 Unified Model Providers
+- 📚 Unified Model Providers with Langchain
 - 🤖 Multi-Model Streaming Chat Conversations
 - 📦 Modular Workflow with Extensions
-- 🌐 Backend and Browser Environment Support
 - 🛎️ Event-Driven Stream Data
+- 🌐 Browser Support
 
 ## Packages
 - `@nakka/core`: Nakka core functionalities
@@ -14,7 +14,8 @@ Multi AI SDK built on top of Langchain, designed for seamless integration into p
 - `@nakka/extension`: Official extensions
 - `@nakka/ui`: UI SDK
 
-## Example Usage
+## Usage
+### Streaming Multiple Models
 1. Install nakka
 ```bash
 bun install @nakka/core
@@ -74,3 +75,93 @@ console.log(`\nDone.`)
 ```
 3. Multi Output
 ![image](./assets/images/preview-1.png)
+
+
+### Create Custom "Tool" with Nakka Extension Kit
+1. Example Extension: Generate UUID
+```typescript
+import { defineNakkaExtension } from '@nakka/kit'
+
+const extUuidGenreator = defineNakkaExtension({
+  id: '@official/uuid-generator',
+  name: 'UUID Generator Tool',
+  description: 'Generate UUID realtime',
+  tags: ['tools', 'generator'],
+  schema: z.object({
+    version: z.enum(['auto', 'v4', 'v6', 'v7']).default('auto'),
+  }),
+  setup(context) {
+    context.addTool(
+      'uuid-generator',
+      `use this tool if user want to generate uuid`,
+      z.object({
+        version: z.enum(['v4', 'v6', 'v7']).default('v4'),
+      }),
+      async (params, input) => {
+        const version = params.version == 'auto' ? input.version : params.version
+        if (version === 'v6') return uuid.v6()
+        if (version === 'v7') return uuid.v7()
+        return uuid.v4()
+      }
+    )
+  },
+})
+```
+2. Examlpe Usage: Weathers
+```typescript
+import { defineNakkaExtension } from '@nakka/kit'
+
+const extWeather = defineNakkaExtension({
+  id: '@official/weather',
+  name: 'Realtiem Weather',
+  description: 'Get realtime weather',
+  tags: ['tools'],
+  schema: z.object({}),
+  setup(context) {
+    context.addTool(
+      'weather',
+      `use this tool if user want to get realtime weather`,
+      z.object({
+        location: z.string().default('jakarta'),
+      }),
+      async (extsParams, params) => {
+        return `Weather in ${params.location} is sunny`
+      }
+    )
+  },
+})
+```
+3. Use Extension
+```typescript
+import { NakkaCore, OpenaiGpt3dot5TurboModel } from '@nakka/core'
+
+const nakka = new NakkaCore({
+  models: [
+    OpenaiGpt3dot5TurboModel,
+  ],
+  env: {
+    MODEL_OPENAI_API_KEY: process.env.MODEL_OPENAI_API_KEY || '',
+  }
+})
+
+const conversation = nakka.chat({
+  models: [
+    // using model id
+    '@openai/gpt3.5-turbo',
+    // model id with params
+    ['@openai/gpt3.5-turbo', { temperature: 0.5 }],
+    // with extensions
+    [
+      '@openai/gpt3.5-turbo',
+      { temperature: 1, maxTokens: 100 },
+      {
+        extensions: [
+          '@official/uuid-generator',
+          '@official/weather',
+        ],
+      },
+    ]
+  ],
+  prompt: 'Generate UUID, and get weather in jakarta today',
+})
+```

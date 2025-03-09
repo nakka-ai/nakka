@@ -1,11 +1,8 @@
 import { Readable } from "stream"
 import { zodToJsonSchema } from "zod-to-json-schema"
-import {
-  ModelRunner,
-  OpenaiGpt3dot5TurboModel,
-  type BaseModel,
-  type BaseModelBaseChat,
-} from "./models"
+import { z } from "zod"
+
+import { NakkaExtensionKit, type NakkaExtensionContext, type NakkaExtensionReturn } from "@nakka/kit"
 
 import type { BaseChatModel } from "@langchain/core/language_models/chat_models"
 import type { ChatOpenAI, ChatOpenAICallOptions } from "@langchain/openai"
@@ -14,25 +11,12 @@ import { AIMessageChunk } from "@langchain/core/messages"
 import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts"
 import { AgentExecutor, createToolCallingAgent } from "langchain/agents"
 import { DynamicStructuredTool } from "langchain/tools"
-import { z } from "zod"
 
-const convertSchemaToJSON = (zodSchema: any) => {
-  const jsonSchema = [];
-
-  for (const [key, value] of Object.entries(zodSchema.shape) as any) {
-    console.log('wae', value)
-    const description = value._def.description || ''
-    const type = value._def.typeName.toLowerCase()
-
-    jsonSchema.push({
-      property: key,
-      description,
-      type,
-    });
-  }
-
-  return jsonSchema;
-}
+import {
+  ModelRunner,
+  type BaseModel,
+  type BaseModelBaseChat,
+} from "./models"
 
 export interface nakkaChatMessage {
   role: "user" | "assistant" | "system";
@@ -52,21 +36,30 @@ export interface nakkaChatMessageImageUrl extends nakkaChatMessage {
 
 export interface nakkaChatOptions {
   conversationIds?: string[];
-  models: (string | [string, object])[];
+  models: (
+    string | [
+      string, object, {
+        extensions: (string | [string, object])[]
+      }
+    ]
+  )[]
   prompt?: string;
   messages?: (nakkaChatMessageText | nakkaChatMessageImageUrl)[];
 }
 
 export interface NakkaCoreOptions {
-  models: (typeof BaseModel<BaseModelBaseChat>)[];
-  env: Record<string, string>;
+  models: (typeof BaseModel<BaseModelBaseChat>)[]
+  extensions: NakkaExtensionReturn[]
+  env: Record<string, string>
 }
 
 export class NakkaCore {
-  private models: BaseModel<BaseModelBaseChat>[] = [];
+  public kit: NakkaExtensionKit
+  public models: BaseModel<BaseModelBaseChat>[] = [];
 
-  constructor(private opts: NakkaCoreOptions) {
-    this.models = this.opts.models.map((Model) => new Model());
+  constructor(public opts: NakkaCoreOptions) {
+    this.models = this.opts.models.map((Model) => new Model())
+    this.kit = new NakkaExtensionKit(this)
   }
 
   env(key: string, defaultValue?: string): string | undefined {
@@ -96,14 +89,53 @@ export class NakkaCore {
   }
 
   chat(options: nakkaChatOptions) {
+    const conversationIds = options.conversationIds || []
     const modelsIds = options.models || [];
     const models = (
       modelsIds
-        .map((modelId) => this.model(typeof modelId === "string" ? modelId : modelId[0]))
-        .filter((model) => model) as BaseModel<BaseModelBaseChat>[]
-    ).map((model) => new ModelRunner(this, model));
-    const conversationIds = options.conversationIds || [];
-    return new ChatConversation(this, conversationIds, models, options);
+        .map((modelId) => {
+          const isModelIdString = typeof modelId === "string"
+          return {
+            model: this.model(isModelIdString ? modelId : modelId[0]),
+            params: isModelIdString ? {} : modelId[1],
+            extensions: isModelIdString ? [] : modelId[2].extensions.map((extId) => ({
+              id: typeof extId === "string" ? extId : extId[0],
+              params: typeof extId === "string" ? {} : extId[1],
+              context: this.kit.getExtension(typeof extId === "string" ? extId : extId[0]),
+            })),
+          }
+        })
+        // .map((model) => {
+        //   return {
+        //     ...model,
+        //     // extension: model.extensionIds.map((extId) => this.kit.getExtension(extId)),
+        //   }
+        // })
+        .filter((model) => {
+          // {
+          //   model: model.model,
+          //   params: model.params,
+          //   extensions: model.extension,
+          // }
+          if (!model.model || !model.extensions || !model.params) return false
+          return true
+        }) as {
+          model: BaseModel<BaseModelBaseChat>,
+          params: z.infer<BaseModel<BaseModelBaseChat>["parameters"]>,
+          extensions: {
+            id: string,
+            params: object,
+            context: NakkaExtensionContext,
+          }[]
+        }[]
+    ).map((model) => new ModelRunner(this, model.model, model.extensions))
+
+    return new ChatConversation(
+      this,
+      conversationIds,
+      models,
+      options
+    )
   }
 }
 
@@ -130,13 +162,18 @@ export interface ChatConversationStreamUsageMetadata extends ChatConversationBas
 export interface ChatConversationStreamToolStart extends ChatConversationBaseStream {
   type: "tool_start"
   name: string
-  data: any
+  input: {
+    [key: string]: any
+  }
 }
 
 export interface ChatConversationStreamToolEnd extends ChatConversationBaseStream {
   type: "tool_end"
   name: string
-  data: any
+  input: {
+    [key: string]: any
+  }
+  output: object
 }
 
 export type ChatConversationStreamEvent = ChatConversationStreamContent | ChatConversationStreamUsageMetadata | ChatConversationStreamToolStart | ChatConversationStreamToolEnd
@@ -185,18 +222,7 @@ export class ChatConversation {
       const lcModel = model.getLangchainModel(modelParams)
       
       // build
-      const tools = [
-        new DynamicStructuredTool({
-          name: 'getWeather',
-          description: 'Get weather information',
-          schema: z.object({
-            location: z.string(),
-          }),
-          func: async (input) => {
-            return `The weather in ${input.location} is sunny`
-          }
-        })
-      ]
+      const tools = model.getTools()
       const prompt = ChatPromptTemplate.fromMessages([
         // new MessagesPlaceholder("history"),
         // ["system", SYSTEM_PROMPT],
@@ -223,7 +249,7 @@ export class ChatConversation {
 
 
       // start stream
-      const reader = lcStream.getReader();
+      const reader = lcStream.getReader()
       // await new Promise((resolve) => setTimeout(resolve, 1000));
 
       try {
@@ -291,18 +317,27 @@ export class ChatConversation {
         outputTokens: output_tokens,
       }
     } else if (ev.event === 'on_tool_start') {
+      let input = {}
+      try {
+        input = JSON.parse(ev.data?.input?.input || '')
+      } catch (error) {}
       return {
         ...baseEv,
         type: "tool_start",
         name: ev.name,
-        data: ev.data,
+        input,
       }
     } else if (ev.event === 'on_tool_end') {
+      let input = {}
+      try {
+        input = JSON.parse(ev.data?.input?.input || '')
+      } catch (error) {}
       return {
         ...baseEv,
         type: "tool_end",
         name: ev.name,
-        data: ev.data,
+        input,
+        output: ev.data?.output || '',
       }
     }
   }

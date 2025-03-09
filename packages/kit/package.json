@@ -1,0 +1,19 @@
+{
+  "name": "@nakka/kit",
+  "module": "src/index.ts",
+  "typings": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.42",
+    "@langchain/google-genai": "^0.1.10",
+    "@langchain/openai": "^0.4.4",
+    "langchain": "^0.3.19",
+    "zod": "^3.24.2"
+  }
+}

@@ -2,7 +2,9 @@ import type { BaseChatModel, BaseChatModelCallOptions } from '@langchain/core/la
 import type { AIMessageChunk } from '@langchain/core/messages'
 import { ChatOpenAI, type ChatOpenAICallOptions } from '@langchain/openai'
 import { z } from 'zod'
+import { DynamicStructuredTool } from 'langchain/tools'
 import type { NakkaCore } from '.'
+import type { NakkaExtensionContext } from '@nakka/kit'
 
 export interface ModelMetadata {
   id: string
@@ -37,12 +39,19 @@ export class BaseModel<T extends BaseModelBaseChat, K extends z.ZodObject<any> =
 }
 
 export class ModelRunner<K extends BaseModelBaseChat, T extends BaseModel<K> = BaseModel<K>> {
-  constructor(private nakka: NakkaCore, public model: T) {}
+  constructor(private nakka: NakkaCore, public model: T, public extensions: { params: object, context: NakkaExtensionContext }[] = []) {
+    // console.log('aweokaowe', extensions.map(e => e.params))
+  }
 
   getLangchainModel(params: z.infer<T['parameters']> = {}): K {
     const parsed = this.model.parameters.parse(params)
     // console.log('parsed', parsed)
     return this.model.getLangchainModel(this.nakka, parsed)
+  }
+
+  getTools(): DynamicStructuredTool[] {
+    // return this.nakka.kit.getTools()
+    return this.extensions.map((e) => e.context.tools.map((t) => t(e.params))).flat()
   }
 }
 
