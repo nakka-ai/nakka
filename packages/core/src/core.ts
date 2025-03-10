@@ -12,6 +12,19 @@ import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts
 import { AgentExecutor, createToolCallingAgent } from "langchain/agents"
 import { DynamicStructuredTool } from "langchain/tools"
 
+
+export class NakkaChatConversationError extends Error {
+  wrapperError: Error
+
+  constructor(err: any) {
+    const error = err instanceof Error ? err : new Error(`${err}`)
+    const message = `[${error.constructor.name}] ${error.message}`
+    super(message || error.message)
+    this.name = "NakkaChatConversationError"
+    this.wrapperError = error
+  }
+}
+
 import {
   ModelRunner,
   type BaseModel,
@@ -105,18 +118,7 @@ export class NakkaCore {
             })),
           }
         })
-        // .map((model) => {
-        //   return {
-        //     ...model,
-        //     // extension: model.extensionIds.map((extId) => this.kit.getExtension(extId)),
-        //   }
-        // })
         .filter((model) => {
-          // {
-          //   model: model.model,
-          //   params: model.params,
-          //   extensions: model.extension,
-          // }
           if (!model.model || !model.extensions || !model.params) return false
           return true
         }) as {
@@ -129,7 +131,6 @@ export class NakkaCore {
           }[]
         }[]
     ).map((model) => new ModelRunner(this, model.model, model.extensions))
-
     return new ChatConversation(
       this,
       conversationIds,
@@ -140,11 +141,19 @@ export class NakkaCore {
 }
 
 export interface ChatConversationBaseStream {
-  modelIndex: number;
-  modelId: string;
-  lcEvent: StreamEvent;
-  lcEventName: string;
-  lcEventFrom: string;
+  modelIndex: number
+  modelId: string
+  lcEvent?: StreamEvent
+  lcEventName?: string
+  lcEventFrom?: string
+}
+
+export interface ChatConversationStreamError extends ChatConversationBaseStream {
+  type: "error"
+  code: string
+  message: string
+  error: Error | any
+  errors?: z.ZodIssue[]
 }
 
 export interface ChatConversationStreamContent extends ChatConversationBaseStream {
@@ -176,7 +185,11 @@ export interface ChatConversationStreamToolEnd extends ChatConversationBaseStrea
   output: object
 }
 
-export type ChatConversationStreamEvent = ChatConversationStreamContent | ChatConversationStreamUsageMetadata | ChatConversationStreamToolStart | ChatConversationStreamToolEnd
+export type ChatConversationStreamEvent = ChatConversationStreamContent
+  | ChatConversationStreamUsageMetadata 
+  | ChatConversationStreamToolStart 
+  | ChatConversationStreamToolEnd
+  | ChatConversationStreamError
 
 class AsyncQueue<T> {
   private queue: (T | null)[] = [];
@@ -210,77 +223,107 @@ export class ChatConversation {
     public options: nakkaChatOptions
   ) {}
 
-  // async function* streamToAsyncIterable(stream: ReadableStream<string>): AsyncIterable<string> {
   async *stream(): AsyncIterable<ChatConversationStreamEvent> {
     this.abortController = new AbortController();
     const queue = new AsyncQueue<ChatConversationStreamEvent>();
 
-    // Jalankan semua model secara paralel
     const streamPromises = this.models.map(async (model, modelIndex) => {
-      const modelId = model.model.metadata.id;
-      const modelParams = Array.isArray(this.options.models[modelIndex]) ? this.options.models[modelIndex][1] : {};
-      const lcModel = model.getLangchainModel(modelParams)
-      
-      // build
-      const tools = model.getTools()
-      const prompt = ChatPromptTemplate.fromMessages([
-        // new MessagesPlaceholder("history"),
-        // ["system", SYSTEM_PROMPT],
-        ["human", "{input}"],
-        new MessagesPlaceholder("agent_scratchpad"),
-      ])
-      const agent = createToolCallingAgent({
-        llm: lcModel,
-        tools,
-        prompt,
-      })
-      const executor = new AgentExecutor({
-        agent,
-        tools,
-        maxIterations: 3,
-        returnIntermediateSteps: true,
-      })
-      const lcStream = executor.streamEvents({
-        input: this.options.prompt || "",
-      }, {
-        version: "v2",
-        signal: this.abortController.signal,
-      })
-
-
-      // start stream
-      const reader = lcStream.getReader()
-      // await new Promise((resolve) => setTimeout(resolve, 1000));
-
       try {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          if (value) {
-            const val = this._buildStreamFromLangchainStreamEvent(
+        const modelId = model.model.metadata.id;
+        const modelParams = Array.isArray(this.options.models[modelIndex]) ? this.options.models[modelIndex][1] : {};
+
+        let lcModel
+        try {
+          lcModel = model.getLangchainModel(modelParams)
+        } catch (error) {
+          if (error instanceof z.ZodError) {
+            queue.push({
+              modelId: model.model.metadata.id,
               modelIndex,
-              modelId,
-              value
-            )
-            if (val) {
-              this.streamEvents.push(value)
-              queue.push(val)
-            }
+              type: "error",
+              code: "model_params_error",
+              message: `invalid model params`,
+              error,
+              errors: error.errors,
+            })
+            this.abort("invalid model params")
+            return
+          } else {
+            throw error
           }
         }
-      } finally {
-        reader.releaseLock();
+        
+        // build
+        const tools = model.getTools()
+        const prompt = ChatPromptTemplate.fromMessages([
+          // new MessagesPlaceholder("history"),
+          // ["system", SYSTEM_PROMPT],
+          ["human", "{input}"],
+          new MessagesPlaceholder("agent_scratchpad"),
+        ])
+        const agent = createToolCallingAgent({
+          llm: lcModel,
+          tools,
+          prompt,
+        })
+        const executor = new AgentExecutor({
+          agent,
+          tools,
+          maxIterations: 3,
+          returnIntermediateSteps: true,
+        })
+        const lcStream = executor.streamEvents({
+          input: this.options.prompt || "",
+        }, {
+          version: "v2",
+          signal: this.abortController.signal,
+        })
+        // console.log('awoekwaekawoke 999999999')
+
+
+        // start stream
+        const reader = lcStream.getReader()
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (value) {
+              const val = this._buildStreamFromLangchainStreamEvent(
+                modelIndex,
+                modelId,
+                value
+              )
+              if (val) {
+                this.streamEvents.push(value)
+                queue.push(val)
+              }
+            }
+          }
+        } finally {
+          reader.releaseLock();
+        }
+      } catch (err) {
+        const error = new NakkaChatConversationError(err)
+        queue.push({
+          modelId: model.model.metadata.id,
+          modelIndex,
+          type: "error",
+          code: "stream_error",
+          message: `unknown error`,
+          error,
+        })
+        console.error(error)
       }
-    });
+    })
 
-    // Tunggu hingga semua model selesai
-    Promise.allSettled(streamPromises).then(() => queue.push(null));
+    Promise.allSettled(streamPromises).then(() => queue.push(null))
 
-    // Gunakan generator untuk mengeluarkan hasil dari queue
     while (true) {
-      const result = await queue.next();
-      if (result === null) break; // Selesai, keluar dari loop
-      yield result;
+      const result = await queue.next()
+      if (result === null) break
+      yield result
     }
   }
 

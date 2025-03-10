@@ -40,18 +40,25 @@ export class BaseModel<T extends BaseModelBaseChat, K extends z.ZodObject<any> =
 
 export class ModelRunner<K extends BaseModelBaseChat, T extends BaseModel<K> = BaseModel<K>> {
   constructor(private nakka: NakkaCore, public model: T, public extensions: { params: object, context: NakkaExtensionContext }[] = []) {
-    // console.log('aweokaowe', extensions.map(e => e.params))
   }
 
   getLangchainModel(params: z.infer<T['parameters']> = {}): K {
     const parsed = this.model.parameters.parse(params)
-    // console.log('parsed', parsed)
     return this.model.getLangchainModel(this.nakka, parsed)
   }
 
   getTools(): DynamicStructuredTool[] {
-    // return this.nakka.kit.getTools()
-    return this.extensions.map((e) => e.context.tools.map((t) => t(e.params))).flat()
+    // parse first
+    const params: Record<string, object> = {}
+    for (const e of this.extensions.filter((e) => e.context)) {
+      const parsed = e.context.extension.schema.parse(e.params)
+      params[e.context.extension.id] = parsed
+    }
+    // return this.extensions.map((e) => e.context.tools.map((t) => t(e.params))).flat()
+    return this.extensions
+      .filter(e => e.context)
+      .map((e) => e.context.tools.map((t) => t(params[e.context.extension.id])))
+      .flat()
   }
 }
 

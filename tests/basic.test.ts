@@ -60,8 +60,8 @@ describe('basic', () => {
           z.object({
             location: z.string().default('jakarta'),
           }),
-          async (extsParams, params) => {
-            return `Weather in ${params.location} is sunny`
+          async (params, input) => {
+            return `Weather in ${input.location} is sunny`
           }
         )
       },
@@ -85,7 +85,7 @@ describe('basic', () => {
       models: [
         [
           '@openai/gpt4o',
-          { temperature: 1, maxTokens: 100 },
+          { temperature: 1, maxTokens: '100' },
           {
             extensions: [
               ['@official/uuid-generator', { version: 'v6' }],
@@ -120,10 +120,11 @@ describe('basic', () => {
       chunks.push(chunk)
       const key = `${chunk.modelIndex}.${chunk.modelId}`
       let content = ''
-      if (chunk.type === 'content' && chunk.content) {
+      if (chunk.type === 'error') {
+        console.error(chunk)
+      } else if (chunk.type === 'content' && chunk.content) {
         content = chunk.content
-      }
-      if (chunk.type === 'tool_start') {
+      } else if (chunk.type === 'tool_start') {
         content = `(tool.start:${chunk.name})`
         // data.push(`[${key}] [tool] start: ${chunk.name} data: ${JSON.stringify(chunk.input)}`)
       } else if (chunk.type === 'tool_end') {
@@ -133,7 +134,7 @@ describe('basic', () => {
         content = `(usage.input:${chunk.inputTokens})(usage.output:${chunk.outputTokens})`
       }
       modelOutputs[key] = (modelOutputs[key] || '') + content
-      updateCLI()
+      if (content != '') updateCLI()
     }
     // for debug:
     // const chunksJson = JSON.stringify(chunks, null, 2)

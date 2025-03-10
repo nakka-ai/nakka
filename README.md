@@ -1,5 +1,6 @@
 # Nakka
-Multi AI SDK built on top of Langchain, designed for seamless integration into projects with modular workflows and extensions.
+Multi AI SDK built on top of Langchain, designed for seamless integration into projects with modular workflows and extensions.  
+![preview](./assets/images/preview-2.gif)
 
 ## Main Features
 - 📚 Unified Model Providers with Langchain
@@ -13,6 +14,33 @@ Multi AI SDK built on top of Langchain, designed for seamless integration into p
 - `@nakka/kit`: Extension kit
 - `@nakka/extension`: Official extensions
 - `@nakka/ui`: UI SDK
+- `@nakka/cli`: Example usage Nakka with command line interface
+
+
+## Concept
+### Chat Input
+ChatConversation Input:
+```json
+{
+  "prompt": "Generate UUID, and get weather in jakarta today",
+  "models": [
+    "@openai/gpt3.5-turbo",
+    ["@openai/gpt4", { "temperature": 0.5 }],
+    [
+      "@openai/gpt4",
+      { "temperature": 0.5, "maxTokens": 100 },
+      {
+        "extensions": [
+          "@official/weather",
+          ["@official/uuid-generator", { "version": "v6" }
+        ]
+      }
+    ]
+  ]
+}
+```
+The concept is to ensure that the input has the freedom to choose the model, the extensions used, and the necessary custom parameters, allowing for the construction of more complex workflows. It also allows for multiple models to be run simultaneously to create a more dynamic chat conversation.
+
 
 ## Usage
 ### Streaming Multiple Models

@@ -38,8 +38,9 @@ export class NakkaExtensionKit {
             name,
             description,
             schema,
-            func(input, runManager, config) {
-              return func(params, input, runManager, config)
+            async func(input, runManager, config) {
+              await new Promise((resolve) => setTimeout(resolve, 200))
+              return await func(params, input, runManager, config)
             },
           })
         })
