@@ -2,7 +2,9 @@
   "name": "nakka",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*",
+    "apps/*"
   ],
   "devDependencies": {
     "@types/bun": "latest"

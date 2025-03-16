@@ -12,24 +12,12 @@ import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts
 import { AgentExecutor, createToolCallingAgent } from "langchain/agents"
 import { DynamicStructuredTool } from "langchain/tools"
 
-
-export class NakkaChatConversationError extends Error {
-  wrapperError: Error
-
-  constructor(err: any) {
-    const error = err instanceof Error ? err : new Error(`${err}`)
-    const message = `[${error.constructor.name}] ${error.message}`
-    super(message || error.message)
-    this.name = "NakkaChatConversationError"
-    this.wrapperError = error
-  }
-}
-
 import {
   ModelRunner,
   type BaseModel,
   type BaseModelBaseChat,
 } from "./models"
+import { NakkaChatConversationError } from "./error"
 
 export interface nakkaChatMessage {
   role: "user" | "assistant" | "system";
@@ -76,7 +64,9 @@ export class NakkaCore {
   }
 
   env(key: string, defaultValue?: string): string | undefined {
-    return this.opts.env[key] || defaultValue;
+    const val = this.opts.env[key] || defaultValue;
+    if (val == '') return undefined
+    return val
   }
 
   envs(): Record<string, string> {
@@ -325,6 +315,18 @@ export class ChatConversation {
       if (result === null) break
       yield result
     }
+  }
+
+  toReadableStream(): Readable {
+    const stream = this.stream()
+    return new Readable({
+      objectMode: true,
+      async read() {
+        for await (const chunk of stream) {
+          this.push(chunk)
+        }
+      }
+    })
   }
 
   private _buildStreamFromLangchainStreamEvent(

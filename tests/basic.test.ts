@@ -85,7 +85,7 @@ describe('basic', () => {
       models: [
         [
           '@openai/gpt4o',
-          { temperature: 1, maxTokens: '100' },
+          { temperature: 1, maxTokens: 100 },
           {
             extensions: [
               ['@official/uuid-generator', { version: 'v6' }],

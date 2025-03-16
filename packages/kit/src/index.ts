@@ -6,7 +6,9 @@ import { NakkaCore } from '@nakka/core'
 import { DynamicStructuredTool } from 'langchain/tools'
 import { z } from 'zod'
 
-type ZodObjectAny = z.ZodObject<any, any, any, any>
+export * from './schema'
+
+export type ZodObjectAny = z.ZodObject<any, any, any, any>
 
 export class NakkaExtensionKit {
   exts: NakkaExtensionContext<any>[] = []

@@ -5,6 +5,7 @@ Multi AI SDK built on top of Langchain, designed for seamless integration into p
 ## Main Features
 - 📚 Unified Model Providers with Langchain
 - 🤖 Multi-Model Streaming Chat Conversations
+- 📖 Multi Branch Chat
 - 📦 Modular Workflow with Extensions
 - 🛎️ Event-Driven Stream Data
 - 🌐 Browser Support

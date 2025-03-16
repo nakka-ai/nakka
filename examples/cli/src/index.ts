@@ -90,7 +90,17 @@ class AIStreamCLI {
       end?: ChatConversationStreamToolEnd,
     }[] = []
     const conversation = nakka.chat({
-      models: nakka.getRegisteredModels().map((model) => [model.id, {}, { extensions: EXTENSION_TO_REGISTERS.map((e) => e.options.id) }]),
+      models: nakka
+        .getRegisteredModels()
+        .map((model) => [
+          model.id,
+          {
+            // temperature: 1,
+          },
+          {
+            extensions: EXTENSION_TO_REGISTERS.map((e) => e.options.id)
+          }
+        ]),
       prompt: text,
     })
     const stream = conversation.stream()

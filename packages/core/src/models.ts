@@ -1,10 +1,10 @@
+import { z } from 'zod'
 import type { BaseChatModel, BaseChatModelCallOptions } from '@langchain/core/language_models/chat_models'
 import type { AIMessageChunk } from '@langchain/core/messages'
 import { ChatOpenAI, type ChatOpenAICallOptions } from '@langchain/openai'
-import { z } from 'zod'
 import { DynamicStructuredTool } from 'langchain/tools'
-import type { NakkaCore } from '.'
 import type { NakkaExtensionContext } from '@nakka/kit'
+import { ModelError, NakkaChatConversationError, type NakkaCore } from '.'
 
 export interface ModelMetadata {
   id: string
@@ -67,11 +67,16 @@ export class ModelRunner<K extends BaseModelBaseChat, T extends BaseModel<K> = B
 export class OpenaiBaseModel extends BaseModel<ChatOpenAI<ChatOpenAICallOptions>> {
   openaiModelName: string = 'gpt-3.5-turbo'
   parameters = z.object({
-    temperature: z.number().default(0.5).describe('temperature of the model'),
-    maxTokens: z.number().default(-1).describe('max tokens of the model, -1 for unlimited'),
+    temperature: z.number().min(0).max(2).default(1).describe('temperature of the model'),
+    maxTokens: z.number().min(0).default(0).describe('max tokens of the model, -1 for unlimited'),
+    presencePenalty: z.number().min(0).max(2).default(0).describe('presence penalty of the model'),
+    frequencyPenalty: z.number().min(0).max(2).default(0).describe('frequency penalty of the model'),
+    topP: z.number().min(0).max(1).default(1).describe('top p of the model'),
   })
   
   getLangchainModel(nakka: NakkaCore, params: z.infer<this['parameters']>){
+    if (!nakka.env('MODEL_OPENAI_API_KEY')) throw new ModelError('OpenAI API key not found')
+    const maxTokens = (params.maxTokens == 0) ? -1 : params.maxTokens
     const model = new ChatOpenAI({
       openAIApiKey: nakka.env('MODEL_OPENAI_API_KEY'),
       model: this.openaiModelName,
@@ -79,7 +84,13 @@ export class OpenaiBaseModel extends BaseModel<ChatOpenAI<ChatOpenAICallOptions>
       streamUsage: true,
       // params
       temperature: params.temperature,
-      maxTokens: params.maxTokens,
+      maxTokens: maxTokens,
+      presencePenalty: params.presencePenalty,
+      frequencyPenalty: params.frequencyPenalty,
+      topP: params.topP,
+      // configuration: {
+      //   baseURL: 'https://google.com',
+      // }
     })
     return model
   }
@@ -123,3 +134,5 @@ export class OpenaiGpt4oModel extends OpenaiBaseModel {
     this.openaiModelName = 'gpt-4o'
   }
 }
+
+// 
